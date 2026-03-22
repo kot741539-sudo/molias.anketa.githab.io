@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Клан Molias | Вступление в Standoff 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #0a0f1e, #03060c);
+            font-family: 'Segoe UI', 'Poppins', 'Orbitron', 'Inter', system-ui, -apple-system, sans-serif;
+            color: #eef5ff;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(30, 40, 60, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(30, 40, 60, 0.2) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #c0a0ff, #a05eff, #ff5e8e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 12px rgba(160, 94, 255, 0.4);
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #c0a5ff;
+            margin-top: 0.5rem;
+            border-bottom: 1px dashed rgba(160, 120, 255, 0.4);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .card {
+            background: rgba(12, 20, 30, 0.75);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            border: 1px solid rgba(160, 120, 255, 0.3);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.6);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.8);
+            border-color: rgba(160, 120, 255, 0.6);
+        }
+
+        .rules-card {
+            flex: 2;
+            min-width: 320px;
+        }
+
+        .form-card {
+            flex: 1.4;
+            min-width: 340px;
+        }
+
+        .card-header {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1.2rem 1.8rem;
+            border-bottom: 2px solid #a05eff;
+        }
+
+        .card-header h2 {
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-header h2 i {
+            font-size: 1.8rem;
+        }
+
+        .card-content {
+            padding: 1.5rem 1.8rem;
+        }
+
+        .rule-section {
+            margin-bottom: 1.8rem;
+        }
+
+        .rule-section h3 {
+            color: #c8aeff;
+            font-size: 1.3rem;
+            margin-bottom: 0.7rem;
+            border-left: 4px solid #a05eff;
+            padding-left: 12px;
+        }
+
+        .rule-list {
+            list-style: none;
+            padding-left: 0.5rem;
+        }
+
+        .rule-list li {
+            margin-bottom: 0.55rem;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .rule-list li::before {
+            content: "▹";
+            color: #b78eff;
+            font-weight: bold;
+        }
+
+        .badge-mini {
+            background: #a05eff20;
+            border-left: 3px solid #a05eff;
+            padding: 0.2rem 0.5rem;
+            margin-top: 0.4rem;
+            font-size: 0.85rem;
+            border-radius: 6px;
+        }
+
+        .punish-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .punish-table th, .punish-table td {
+            border: 1px solid rgba(160, 120, 255, 0.3);
+            padding: 8px 6px;
+            text-align: left;
+        }
+
+        .punish-table th {
+            background: #1e2a3a;
+            color: #d4bcff;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 14px;
+            background: #0f1822;
+            border: 1px solid #2c3e44;
+            border-radius: 14px;
+            color: #f0f4fa;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #a05eff;
+            box-shadow: 0 0 0 2px rgba(160, 94, 255, 0.3);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .checkbox-group input {
+            width: 22px;
+            height: 22px;
+            accent-color: #a05eff;
+        }
+
+        button {
+            background: linear-gradient(95deg, #8c5eff, #a05eff);
+            border: none;
+            width: 100%;
+            padding: 14px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: white;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 6px 14px rgba(128, 80, 200, 0.4);
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            transform: scale(0.98);
+            background: linear-gradient(95deg, #7a4ae8, #8c5eff);
+            box-shadow: 0 2px 8px rgba(128, 80, 200, 0.5);
+        }
+
+        .success-message {
+            background: #1d4d1dcc;
+            backdrop-filter: blur(4px);
+            border-radius: 20px;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 1rem;
+            border: 1px solid #6fbf6f;
+            color: #d0ffd0;
+        }
+
+        .error-message {
+            background: #771111cc;
+            border-radius: 20px;
+            padding: 0.8rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            border-top: 1px solid rgba(160, 120, 255, 0.2);
+            padding-top: 2rem;
+        }
+
+        @media (max-width: 860px) {
+            .hero h1 { font-size: 2.3rem; }
+            .card-header h2 { font-size: 1.5rem; }
+            .card-content { padding: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1>⚔️ КЛАН MOLIAS ⚔️</h1>
+        <p>Мощь. Тактика. Единство. — Добро пожаловать в элиту Standoff 2</p>
+    </div>
+
+    <div class="grid">
+        <!-- Блок с правилами клана Molias -->
+        <div class="card rules-card">
+            <div class="card-header">
+                <h2>📜 УСТАВ КЛАНА MOLIAS</h2>
+            </div>
+            <div class="card-content">
+                <div class="rule-section">
+                    <h3>1. Общие положения</h3>
+                    <ul class="rule-list">
+                        <li>1.1. Клан Molias создан для совместной игры в рейтинговых режимах, участия в «Битве кланов» и взаимопомощи.</li>
+                        <li>1.2. Все взаимодействия осуществляются через внутриигровой чат клана и Discord.</li>
+                        <li>1.3. Вступая в клан, игрок автоматически соглашается с данными правилами.</li>
+                    </ul>
+                </div>
+                <div class="rule-section">
+                    <h3>2. Требования к игрокам</h3>
+                    <ul class="rule-list">
+                        <li>2.1. Активность: Игрок обязан заходить в игру не реже 1 раза в 3 дня. Отсутствие более 7 дней без уважительной причины ведет к исключению.</li>
+                        <li>2.2. Рейтинг: Минимальный требуемый ранг — <strong style="color:#d4bcff">ЗВЕЗДА / МАСТЕР</strong>. При потере ранга дается 2 недели на восстановление.</li>
+                        <li>2.3. Статистика: Уровень аккаунта — не ниже <strong>12</strong>.</li>
+                    </ul>
+                </div>
+                <div class="rule-section">
+                    <h3>3. Битва кланов (Clan War)</h3>
+                    <ul class="rule-list">
+                        <li>3.1. Участие в «Битве кланов» является обязательным для всех членов клана Molias.</li>
+                        <li>3.2. Минимальное количество матчей за сезон: 12 игр. Игроки, не набравшие норму, исключаются.</li>
+                        <li>3.3. Запрещено намеренно сливать матчи, покидать игру до ее завершения или саботировать командную игру.</li>
+                    </ul>
+                </div>
+                <div class="rule-section">
+                    <h3>4. Игровая дисциплина</h3>
+                    <ul class="rule-list">
+                        <li>4.1. Командная игра: В рейтинговых матчах и «Союзниках» игрок обязан играть на победу. Использование голосового чата приветствуется.</li>
+                        <li>4.2. Знание карт: Рекомендуется знать основные позиции и тактики на картах (Zone 9, Raid, Standoff, Monastery).</li>
+                        <li>4.3. Передача оружия: В начале раунда игроки должны помогать союзникам с закупом при наличии лишних средств.</li>
+                    </ul>
+                </div>
+                <div class="rule-section">
+                    <h3>5. Кодекс поведения</h3>
+                    <ul class="rule-list">
+                        <li>❌ Оскорбление членов клана и других игроков в чате.</li>
+                        <li>❌ Токсичное поведение, провокации, грубость.</li>
+                        <li>❌ Использование читов, стороннего ПО, багов для получения преимущества.</li>
+                        <li>❌ Спам в клановом чате и Discord.</li>
+                        <li>⚡ За нарушение применяются санкции (см. раздел 6).</li>
+                    </ul>
+                </div>
+                <div class="rule-section">
+                    <h3>6. Система наказаний</h3>
+                    <table class="punish-table">
+                        <thead>
+                            <tr><th>Нарушение</th><th>Наказание</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Незначительное нарушение (грубость, спам)</td><td>Устное предупреждение в чате клана</td></tr>
+                            <tr><td>Повторное незначительное нарушение</td><td>Предупреждение + испытательный срок 7 дней</td></tr>
+                            <tr><td>Отсутствие более 7 дней без предупреждения</td><td>Исключение из клана</td></tr>
+                            <tr><td>Невыполнение нормы «Битвы кланов»</td><td>Исключение из клана</td></tr>
+                            <tr><td>Оскорбления, токсичность</td><td>Исключение (без предупреждения)</td></tr>
+                            <tr><td>Использование читов</td><td>Мгновенное исключение + репорт</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="rule-section">
+                    <h3>7. Вступление и испытательный срок</h3>
+                    <ul class="rule-list">
+                        <li>7.1. Заявки на вступление рассматриваются лидером или офицерами клана Molias.</li>
+                        <li>7.2. Для новых игроков устанавливается испытательный срок 3 дня.</li>
+                        <li>7.3. По окончании испытательного срока лидер принимает решение о зачислении или отклонении кандидата.</li>
+                        <li>7.4. Основания для отказа: низкая активность, несоответствие рангу, нарушение правил в испытательный период.</li>
+                    </ul>
+                </div>
+                <div class="rule-section">
+                    <h3>8. Заключительные положения</h3>
+                    <ul class="rule-list">
+                        <li>8.1. Лидер и офицеры имеют право вносить изменения в правила с обязательным уведомлением в клановом чате.</li>
+                        <li>8.2. Все спорные вопросы решаются лидером клана Molias или его заместителями.</li>
+                        <li>8.3. Офицеры назначаются лидером из числа активных и проверенных игроков.</li>
+                    </ul>
+                </div>
+                <div class="badge-mini">🏆 Molias — сила в единстве. Следуй уставу, стань частью легенды!</div>
+            </div>
+        </div>
+
+        <!-- АНКЕТА ВСТУПЛЕНИЯ В MOLIAS -->
+        <div class="card form-card">
+            <div class="card-header">
+                <h2>📝 ЗАЯВКА В MOLIAS</h2>
+            </div>
+            <div class="card-content">
+                <form id="joinForm">
+                    <div class="form-group">
+                        <label>🎮 Игровой никнейм (IGN)</label>
+                        <input type="text" id="nickname" placeholder="Ваш ник в Standoff 2" required>
+                    </div>
+                    <div class="form-group">
+                        <label>⭐ Текущий ранг</label>
+                        <select id="rank" required>
+                            <option value="" disabled selected>— выберите ранг —</option>
+                            <option>Новичок (Bronze)</option>
+                            <option>Серебро (Silver)</option>
+                            <option>Золото (Gold)</option>
+                            <option>Звезда (Star)</option>
+                            <option>Мастер (Master)</option>
+                            <option>Легенда (Legend)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>📊 Уровень аккаунта</label>
+                        <input type="number" id="level" placeholder="Ваш уровень (min 12)" min="1" max="200" required>
+                    </div>
+                    <div class="form-group">
+                        <label>📅 Активность (в среднем)</label>
+                        <select id="activity" required>
+                            <option value="" disabled selected>— как часто играете? —</option>
+                            <option>Каждый день</option>
+                            <option>4-6 раз в неделю</option>
+                            <option>2-3 раза в неделю</option>
+                            <option>Реже 1 раза в 3 дня</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>🎯 Готовность участвовать в Битве кланов (мин 12 матчей/сезон)</label>
+                        <select id="cwReady" required>
+                            <option value="" disabled selected>— выберите —</option>
+                            <option>Да, полностью готов(а)</option>
+                            <option>Возможны редкие пропуски, но постараюсь</option>
+                            <option>Не уверен(а)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>💬 Кратко о себе / опыт в Standoff 2</label>
+                        <textarea rows="3" id="about" placeholder="Любимые карты, оружие, командный опыт, ваш Discord (если есть)..."></textarea>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="rulesAgree" required>
+                        <label for="rulesAgree" style="margin-bottom:0; font-weight:500;">✔️ Я ознакомился(ась) и соглашаюсь с <strong>Правилами клана Molias</strong> (п.1.3, 7.1-7.4 и др.)</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="testPeriodAgree" required>
+                        <label for="testPeriodAgree" style="margin-bottom:0;">⏳ Принимаю испытательный срок 3 дня и возможное исключение при несоответствии</label>
+                    </div>
+                    <button type="submit" id="submitBtn">🚀 ОТПРАВИТЬ ЗАЯВКУ</button>
+                    <div id="formFeedback"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+        🔥 Клан MOLIAS — Standoff 2 | Лидер: MOLIAS_LEGEND | Офицеры: VORTEX, PHANTOM, STORM 🔥<br>
+        Актуальная версия правил от 22.03.2026 | Вступление после рассмотрения заявки | Discord: discord.gg/molias
+    </footer>
+</div>
+
+<script>
+    (function() {
+        const form = document.getElementById('joinForm');
+        const feedbackDiv = document.getElementById('formFeedback');
+
+        function showMessage(text, isSuccess = false) {
+            feedbackDiv.innerHTML = '';
+            const msgDiv = document.createElement('div');
+            msgDiv.className = isSuccess ? 'success-message' : 'error-message';
+            msgDiv.innerText = text;
+            feedbackDiv.appendChild(msgDiv);
+            feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function validateFormData(nick, rank, level, activity, cwReady, rulesOk, testOk) {
+            if (!nick.trim()) return "Укажите игровой никнейм.";
+            if (nick.trim().length < 2) return "Никнейм слишком короткий (минимум 2 символа).";
+            if (!rank) return "Выберите ваш текущий ранг.";
+            if (!level) return "Введите уровень аккаунта.";
+            const lvlNum = parseInt(level, 10);
+            if (isNaN(lvlNum)) return "Уровень должен быть числом.";
+            if (lvlNum < 12) return "❌ Требование клана Molias: уровень аккаунта не ниже 12. Повысьте уровень и возвращайтесь!";
+            if (lvlNum > 200) return "Уровень указан некорректно (макс 200).";
+            if (!activity) return "Укажите вашу игровую активность.";
+            if (activity === "Реже 1 раза в 3 дня") {
+                return "⚠️ По правилам клана (п.2.1) необходимо заходить в игру минимум раз в 3 дня. Ваша активность слишком низкая для вступления в Molias.";
+            }
+            if (!cwReady) return "Укажите готовность к Битве кланов.";
+            if (cwReady === "Не уверен(а)") {
+                return "❌ Участие в Битве кланов обязательно (минимум 12 матчей за сезон). Если вы не готовы, подайте заявку позже.";
+            }
+            if (!rulesOk) return "Необходимо согласие с Правилами клана Molias (раздел правил).";
+            if (!testOk) return "Подтвердите согласие на испытательный срок (3 дня).";
+            
+            const allowedRanks = ["Звезда (Star)", "Мастер (Master)", "Легенда (Legend)"];
+            if (!allowedRanks.includes(rank)) {
+                return `🚫 Требование клана Molias: минимальный ранг — ЗВЕЗДА (Star) / МАСТЕР / ЛЕГЕНДА. Ваш ранг "${rank}" не подходит. Поднимите рейтинг и подавайте заявку снова.`;
+            }
+            
+            return null;
+        }
+
+        function sendApplication(data) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    let apps = [];
+                    const stored = localStorage.getItem('molias_applications');
+                    if (stored) {
+                        try {
+                            apps = JSON.parse(stored);
+                        } catch(e) { apps = []; }
+                    }
+                    const newApp = {
+                        id: Date.now(),
+                        timestamp: new Date().toLocaleString(),
+                        ...data
+                    };
+                    apps.push(newApp);
+                    localStorage.setItem('molias_applications', JSON.stringify(apps));
+                    resolve(true);
+                }, 600);
+            });
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const nickname = document.getElementById('nickname').value;
+            const rank = document.getElementById('rank').value;
+            const level = document.getElementById('level').value;
+            const activity = document.getElementById('activity').value;
+            const cwReady = document.getElementById('cwReady').value;
+            const about = document.getElementById('about').value;
+            const rulesAgree = document.getElementById('rulesAgree').checked;
+            const testPeriodAgree = document.getElementById('testPeriodAgree').checked;
+            
+            const errorText = validateFormData(nickname, rank, level, activity, cwReady, rulesAgree, testPeriodAgree);
+            if (errorText) {
+                showMessage(errorText, false);
+                return;
+            }
+            
+            const applicationData = {
+                nickname: nickname.trim(),
+                rank: rank,
+                level: parseInt(level, 10),
+                activity: activity,
+                cwReady: cwReady,
+                about: about.trim() || "—",
+                rulesConfirmed: true,
+                testPeriodConfirmed: true,
+                status: "pending",
+                clan: "Molias"
+            };
+            
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.innerText;
+            btn.innerText = "⏳ Отправка...";
+            btn.disabled = true;
+            
+            try {
+                await sendApplication(applicationData);
+                showMessage(`✅ Заявка от ${nickname.trim()} успешно отправлена в клан Molias! Лидер или офицеры рассмотрят её в ближайшее время. Испытательный срок — 3 дня. Добро пожаловать в ряды Molias после одобрения.`, true);
+                form.reset();
+                document.getElementById('rulesAgree').checked = false;
+                document.getElementById('testPeriodAgree').checked = false;
+                document.getElementById('about').value = '';
+                document.getElementById('rank').value = '';
+                document.getElementById('activity').value = '';
+                document.getElementById('cwReady').value = '';
+            } catch (err) {
+                console.error(err);
+                showMessage("⚠️ Ошибка связи. Попробуйте ещё раз или свяжитесь с лидером напрямую.", false);
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        });
+        
+        const levelInput = document.getElementById('level');
+        levelInput.addEventListener('input', function(e) {
+            let val = parseInt(this.value, 10);
+            if (val < 12 && this.value !== "") {
+                this.style.borderColor = "#ff7a6e";
+            } else {
+                this.style.borderColor = "#2c3e44";
+            }
+        });
+    })();
+</script>
+</body>
+</html>
